@@ -1,7 +1,13 @@
+require 'pry'
 class TadpolesController < ApplicationController
   before_action :set_tadpole, only: [:show, :edit, :update, :destroy, :metamorphose]
 
   # add your metamorphose action here
+  def metamorphose
+    @frog = Frog.create(name:@tadpole.name, color:@tadpole.color, pond_id:@tadpole.frog.pond_id)
+    @tadpole.destroy
+    redirect_to frog_path(@frog)
+  end
 
   def index
     @tadpoles = Tadpole.all
@@ -43,7 +49,7 @@ class TadpolesController < ApplicationController
   def destroy
     @tadpole.destroy
     respond_to do |format|
-      format.html { redirect_to tadpoles_url, notice: 'Tadpole was successfully destroyed.' }
+      format.html { redirect_to tadpoles_url, notice: 'Tadpole was successfully destroyed. You monster!' }
     end
   end
 

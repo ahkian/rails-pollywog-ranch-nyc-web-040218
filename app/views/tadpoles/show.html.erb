@@ -11,7 +11,9 @@
   <a href="/tadpoles">Back</a> |
   <a href="/tadpoles/<%= @tadpole.id %>/edit">Edit</a> |
   <a href="/tadpoles/<%= @tadpole.id %>/destroy">Delete</a>
+  <%= button_to "Become a frog", tadpole_metamorphose_path, method: 'POST' %>
 </div>
+
 
 <div class="card">
   <img src="http://<%= @tadpole.color %>-tadpole.jpg.to/" alt="Tadpole Picture" width="300">
